@@ -7,7 +7,7 @@ import RestrictedRoute from "./RestrictedRoute";
 import PrivateRoute from "./PrivateRoute";
 import Layout from "./Layout/Layout";
 import { selectIsRefreshing } from "../redux/auth/selectors";
-import { refReshUser } from "../redux/auth/operations";
+import { refreshUser } from "../redux/auth/operations";
 
 const ContactPage = lazy(() => import("../pages/ContactPage/ContactPage"));
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
@@ -19,7 +19,7 @@ export default function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(refReshUser());
+    dispatch(refreshUser());
   }, [dispatch]);
   return isRefreshing ? (
     <strong>Refreshing user...</strong>
